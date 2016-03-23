@@ -1,0 +1,6 @@
+%h1= @portrait.title
+%p= @portrait.description
+
+= link_to "Back", root_path
+= link_to "Edit", edit_portrait_path
+= link_to "Delete", portrait_path, method: :delete, data: { confirm: "Are you sure?" }
