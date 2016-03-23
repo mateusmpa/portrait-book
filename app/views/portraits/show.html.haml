@@ -1,12 +1,21 @@
-= image_tag @portrait.image.url(:medium)
-%h1= @portrait.title
-%p= @portrait.description
-%p
-Submited by
-= @portrait.user.email
-
-%br/
-
-= link_to "Back", root_path
-= link_to "Edit", edit_portrait_path
-= link_to "Delete", portrait_path, method: :delete, data: { confirm: "Are you sure?" }
+#portrait_show.row
+  .col-md-8.col-md-offset-2
+    .panel.panel-default
+      .panel-heading.portrait_image
+        = image_tag @portrait.image.url
+      .panel-body
+        %h1= @portrait.title
+        %p.description= @portrait.description
+        %p
+        Submitted by
+        = @portrait.user.email
+      .panel-footer
+        .row
+          .col-md-6
+            %p.user
+            Submitted by
+            = @portrait.user.email
+          .col-md-6
+            .btn-group.pull-right
+              = link_to "Edit", edit_portrait_path, class: "btn btn-default"
+              = link_to "Delete", portrait_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
