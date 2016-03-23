@@ -9,11 +9,11 @@ class PortraitsController < ApplicationController
   end
 
   def new
-    @portrait = Portrait.new
+    @portrait = current_user.portraits.build
   end
 
   def create
-    @portrait = Portrait.new(portrait_params)
+    @portrait = current_user.portraits.build(portrait_params)
 
     if @portrait.save
       redirect_to @portrait, notice: "Successfully created new Portrait"

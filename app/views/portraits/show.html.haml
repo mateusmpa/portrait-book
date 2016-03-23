@@ -1,5 +1,10 @@
 %h1= @portrait.title
 %p= @portrait.description
+%p
+Submited by
+= @portrait.user.email
+
+%br/
 
 = link_to "Back", root_path
 = link_to "Edit", edit_portrait_path
