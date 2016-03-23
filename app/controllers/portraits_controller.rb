@@ -40,7 +40,7 @@ class PortraitsController < ApplicationController
 
   private
   def portrait_params
-    params.require(:portrait).permit(:title, :description)
+    params.require(:portrait).permit(:title, :description, :image)
   end
 
   def find_portrait
