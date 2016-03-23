@@ -1,5 +1,6 @@
 class PortraitsController < ApplicationController
   before_action :find_portrait, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @portraits = Portrait.all.order("created_at DESC")
