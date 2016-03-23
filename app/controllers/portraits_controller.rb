@@ -1,5 +1,5 @@
 class PortraitsController < ApplicationController
-  before_action :find_portrait, only: [:show, :edit, :update, :destroy]
+  before_action :find_portrait, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
     @portraits = Portrait.all.order("created_at DESC")
@@ -36,6 +36,11 @@ class PortraitsController < ApplicationController
   def destroy
     @portrait.destroy
     redirect_to root_path
+  end
+
+  def upvote
+    @portrait.upvote_by current_user
+    redirect_to :back
   end
 
   private
