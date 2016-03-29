@@ -1,7 +1,7 @@
 #portraits.transitions-enabled
   - @portraits.each do |portrait|
     .box.panel.panel-default
-      = link_to (image_tag portrait.image.url), portrait
+      = link_to (image_tag portrait.image.url(:medium)), portrait
       .panel-body
         %h2= link_to portrait.title, portrait
         %p.user
