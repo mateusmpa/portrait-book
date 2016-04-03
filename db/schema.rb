@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403011239) do
+ActiveRecord::Schema.define(version: 20160403032611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(version: 20160403011239) do
     t.integer  "portrait_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   add_index "comments", ["portrait_id"], name: "index_comments_on_portrait_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "portraits", force: :cascade do |t|
     t.string   "title"
@@ -73,4 +75,5 @@ ActiveRecord::Schema.define(version: 20160403011239) do
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   add_foreign_key "comments", "portraits"
+  add_foreign_key "comments", "users"
 end
