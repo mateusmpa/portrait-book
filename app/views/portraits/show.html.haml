@@ -6,16 +6,15 @@
       .panel-body
         %h1= @portrait.title
         %p.description= @portrait.description
-        %p
-        Submitted by
-        = @portrait.user.email
       .panel-footer
         .row
-          .col-md-6
+          .col-md-8
             %p.user
-            Submitted by
-            = @portrait.user.email
-          .col-md-6
+              Submitted
+              = time_ago_in_words(@portrait.created_at)
+              ago by
+              = @portrait.user.email
+          .col-md-4
             .btn-group.pull-right
             = link_to like_portrait_path(@portrait), method: :put, class: "btn btn-default" do
               %span.glyphicon.glyphicon-heart
@@ -23,3 +22,11 @@
             - if user_signed_in?
               = link_to "Edit", edit_portrait_path, class: "btn btn-default"
               = link_to "Delete", portrait_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+#comment.row
+  .col-md-8.col-md-offset-2
+    %h2
+      = @portrait.comments.count
+      Comments
+    = render @portrait.comments
+    %h3 Add a comment:
+    = render "comments/form"

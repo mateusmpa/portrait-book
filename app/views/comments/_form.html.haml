@@ -1,0 +1,5 @@
+= simple_form_for [@portrait, @portrait.comments.build], html: { multpart: true } do |f|
+  .form-group
+    = f.input :content, input_html: { class: 'form_control' }
+
+  = f.button :submit, class: "btn btn-primary"
