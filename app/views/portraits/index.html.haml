@@ -1,9 +1,12 @@
 #portraits.transitions-enabled
   - @portraits.each do |portrait|
     .box.panel.panel-default
-      = link_to (image_tag portrait.image.url(:medium)), portrait
+      .panel-heading
+        .img-thumbnail
+          = link_to (image_tag portrait.image.url(:medium)), portrait
       .panel-body
         %h2= link_to portrait.title, portrait
+      .panel-footer
         %p.user
-        Submitted by
-        = portrait.user.email
+          Submitted by
+          = portrait.user.email

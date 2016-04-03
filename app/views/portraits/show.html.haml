@@ -2,7 +2,8 @@
   .col-md-8.col-md-offset-2
     .panel.panel-default
       .panel-heading.portrait_image
-        = image_tag @portrait.image.url
+        .img-thumbnail
+          = image_tag @portrait.image.url
       .panel-body
         %h1= @portrait.title
         %p.description= @portrait.description
