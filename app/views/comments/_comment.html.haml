@@ -1,9 +1,9 @@
 .panel.panel-default
   .panel-heading
     .row
-      .col-md-9
+      .col-md-10
         %comment_user= comment.user.email
-      .col-md-3
+      .col-md-2
         - if user_signed_in?
           = link_to "Delete", [comment.portrait, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
   .panel-body

@@ -28,6 +28,10 @@
     %h2
       = @portrait.comments.count
       Comments
-    = render @portrait.comments
+    .panel.panel-default
+      .panel-body
+        = render @portrait.comments
     %h3 Add a comment:
-    = render "comments/form"
+    .panel.panel-default
+      .panel-body
+        = render "comments/form"

@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :find_portrait, only: [:create, :destroy]
   before_action :authenticate_user!
 
   def create
-    @portrait = Portrait.find(params[:portrait_id])
     @comment = @portrait.comments.new(comments_params)
     @comment.user = current_user
     @comment.save
@@ -11,9 +11,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @portrait = Portrait.find(params[:portrait_id])
     @comment = @portrait.comments.find(params[:id])
-
     @comment.destroy
 
     redirect_to portrait_path(@portrait)
@@ -22,5 +20,9 @@ class CommentsController < ApplicationController
   private
   def comments_params
     params.require(:comment).permit(:content)
+  end
+
+  def find_portrait
+    @portrait = Portrait.find(params[:portrait_id])
   end
 end
